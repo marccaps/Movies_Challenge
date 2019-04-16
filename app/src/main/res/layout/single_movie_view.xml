@@ -74,7 +74,7 @@
                     android:layout_weight="0.3"
                     android:drawableRight="@drawable/star"
                     android:drawablePadding="5dp"
-                    android:gravity="center_vertical"
+                    android:gravity="right"
                     android:textSize="@dimen/movie_content_size"
                     android:drawableEnd="@drawable/star" />
 
