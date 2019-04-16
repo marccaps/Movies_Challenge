@@ -10,19 +10,34 @@
         android:layout_height="match_parent"
         android:id="@+id/parentShimmerLayout">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <GridLayout
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:columnCount="1"
+            android:rowCount="1"
+            android:orientation="horizontal">
 
             <include layout="@layout/single_movie_view"/>
             <include layout="@layout/single_movie_view"/>
             <include layout="@layout/single_movie_view"/>
             <include layout="@layout/single_movie_view"/>
+
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:columnCount="1"
+            android:rowCount="1"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
+
+            <include layout="@layout/single_movie_view"/>
+            <include layout="@layout/single_movie_view"/>
             <include layout="@layout/single_movie_view"/>
             <include layout="@layout/single_movie_view"/>
 
-        </LinearLayout>
+        </GridLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <android.support.v7.widget.RecyclerView

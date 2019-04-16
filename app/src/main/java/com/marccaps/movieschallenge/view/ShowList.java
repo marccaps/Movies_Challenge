@@ -12,6 +12,7 @@ import com.marccaps.movieschallenge.model.Movie;
 import com.marccaps.movieschallenge.model.MoviesListAdapter;
 import com.marccaps.movieschallenge.presentation.MovieListContract;
 import com.marccaps.movieschallenge.presentation.MovieListPresenter;
+import com.marccaps.movieschallenge.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,7 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
     private void initViews() {
 
         moviesListAdapter = new MoviesListAdapter(this,moviesList);
-        mLayoutManager = new GridLayoutManager(this, 2);
+        mLayoutManager = new GridLayoutManager(this, Constants.NUMBER_OF_ROWS);
         recyclerViewMoviesList.setLayoutManager(mLayoutManager);
         recyclerViewMoviesList.setAdapter(moviesListAdapter);
     }
