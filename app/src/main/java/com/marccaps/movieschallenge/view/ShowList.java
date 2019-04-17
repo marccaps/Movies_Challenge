@@ -1,6 +1,7 @@
 package com.marccaps.movieschallenge.view;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,12 +34,15 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
     RecyclerView recyclerViewMoviesList;
     @BindView(R.id.parentShimmerLayout)
     ShimmerFrameLayout parentShimmerLayout;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_list_layout);
         ButterKnife.bind(this);
+        swipeRefresh();
         if(getSupportActionBar() != null) getSupportActionBar().setTitle(getString(R.string.popular_movies));
 
         initViews();
@@ -57,6 +61,16 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
         mLayoutManager = new GridLayoutManager(this, 2);
         recyclerViewMoviesList.setLayoutManager(mLayoutManager);
         recyclerViewMoviesList.setAdapter(moviesListAdapter);
+    }
+
+    private void swipeRefresh() {
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                movieListPresenter.requestDataFromServer();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
 
