@@ -1,7 +1,6 @@
 package com.marccaps.movieschallenge.view;
 
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +23,10 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
 
     private static final String TAG = "MovieListActivity";
 
+    private int pageNumber = 1;
+    private int previousTotal = 0;
+    private int visibleGrid = 4;
+
     private MovieListPresenter movieListPresenter;
     private List<Movie> moviesList = new ArrayList<>();
     private MoviesListAdapter moviesListAdapter;
@@ -34,17 +37,15 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
     RecyclerView recyclerViewMoviesList;
     @BindView(R.id.parentShimmerLayout)
     ShimmerFrameLayout parentShimmerLayout;
-    @BindView(R.id.swipeRefreshLayout)
-    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_list_layout);
         ButterKnife.bind(this);
-        swipeRefresh();
         if(getSupportActionBar() != null) getSupportActionBar().setTitle(getString(R.string.popular_movies));
 
+        infinityLoopListener();
         initViews();
 
         /*
@@ -63,15 +64,6 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
         recyclerViewMoviesList.setAdapter(moviesListAdapter);
     }
 
-    private void swipeRefresh() {
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                movieListPresenter.requestDataFromServer();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
-    }
 
 
     @Override
@@ -88,6 +80,8 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
     public void setDataToList(List<Movie> movieArrayList) {
         moviesList.addAll(movieArrayList);
         moviesListAdapter.notifyDataSetChanged();
+
+        ++pageNumber;
     }
 
     @Override
@@ -103,5 +97,23 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
     private void enableShimmerEffect() {
         parentShimmerLayout.startShimmer();
         parentShimmerLayout.setVisibility(View.VISIBLE);
+    }
+
+    private void infinityLoopListener() {
+        recyclerViewMoviesList.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                int moviesCount = recyclerViewMoviesList.getChildCount();
+                int totalMoviesCount = mLayoutManager.getItemCount();
+                int firstVisibleMovie = mLayoutManager.findFirstVisibleItemPosition();
+
+                if (totalMoviesCount > previousTotal) {
+                    previousTotal = totalMoviesCount;
+                }
+                if ((totalMoviesCount - moviesCount) <= (firstVisibleMovie + visibleGrid)){
+                    movieListPresenter.getMoreData(pageNumber);
+                }
+            }
+        });
     }
 }

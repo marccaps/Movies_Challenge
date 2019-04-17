@@ -14,7 +14,7 @@ public interface MovieListContract {
             void onFailure(Throwable t);
         }
 
-        void getMovieList(OnFinishedListener onFinishedListener);
+        void getMovieList(OnFinishedListener onFinishedListener, int PageNumber);
 
     }
 
@@ -34,7 +34,7 @@ public interface MovieListContract {
 
         void onDestroy();
 
-        void getMoreData();
+        void getMoreData(int pageNumber);
 
         void requestDataFromServer();
 

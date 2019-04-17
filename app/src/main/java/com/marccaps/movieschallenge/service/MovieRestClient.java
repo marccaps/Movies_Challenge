@@ -9,5 +9,5 @@ import retrofit2.http.Query;
 public interface MovieRestClient {
 
         @GET("3/tv/popular")
-        Call<MovieListResponse> getPopularMovies(@Query("api_key") String apiKey);
+        Call<MovieListResponse> getPopularMovies(@Query("api_key") String apiKey, @Query("page") int PageNumber);
 }

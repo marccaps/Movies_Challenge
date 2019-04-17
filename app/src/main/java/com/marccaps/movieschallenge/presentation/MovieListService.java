@@ -20,12 +20,12 @@ public class MovieListService implements MovieListContract.Service {
     private final String TAG = "MovieListService";
 
     @Override
-    public void getMovieList(final OnFinishedListener onFinishedListener) {
+    public void getMovieList(final OnFinishedListener onFinishedListener,int pageNumber) {
 
         MovieRestClient apiService =
                 ApiClient.getClient().create(MovieRestClient.class);
 
-        Call<MovieListResponse> call = apiService.getPopularMovies(API_KEY);
+        Call<MovieListResponse> call = apiService.getPopularMovies(API_KEY,pageNumber);
         call.enqueue(new Callback<MovieListResponse>() {
             @Override
             public void onResponse(Call<MovieListResponse> call, Response<MovieListResponse> response) {

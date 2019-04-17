@@ -35,11 +35,11 @@ public class MovieListPresenter implements MovieListContract.Presenter, MovieLis
     }
 
     @Override
-    public void getMoreData() {
+    public void getMoreData(int pageNumber) {
         if (movieListView != null) {
             movieListView.showProgress();
         }
-        movieListService.getMovieList(this);
+        movieListService.getMovieList(this,pageNumber);
     }
 
     @Override
@@ -47,6 +47,6 @@ public class MovieListPresenter implements MovieListContract.Presenter, MovieLis
         if (movieListView != null) {
             movieListView.showProgress();
         }
-        movieListService.getMovieList(this);
+        movieListService.getMovieList(this,1);
     }
 }
