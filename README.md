@@ -1,5 +1,5 @@
 # Movies Challenge
-<img src="screenshots/shimmer_loader.jpg" width="300" alt="Loader"/><img src="screenshots/list_init.jpg" width="200" alt="List init"/><img src="screenshots/more_movies_list.jpg" width="200" alt="More Movies"/>
+<img src="screenshots/shimmer_loader.jpg" width="300" alt="Loader"/><img src="screenshots/list_init.jpg" width="300" alt="List init"/><img src="screenshots/more_movies_list.jpg" width="300" alt="More Movies"/>
 
 This is an example application of a List using MovieDB Api. This application will show a list of cards about all the Popular movies in the MovieDB Api.
 
