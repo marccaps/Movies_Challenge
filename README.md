@@ -63,7 +63,7 @@ dependencies {
 
 ## Apk Demo
 
-You can download the application demo from this [link](https://play.google.com/)
+You can download the application demo from this [link](https://i.diawi.com/eNtykK)
 
 ## License
 
