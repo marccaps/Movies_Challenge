@@ -51,107 +51,111 @@ public class Movie {
         this.posterPath = posterPath;
     }
 
-    public String getOriginalName() {
+    Movie() {
+
+    }
+
+    String getOriginalName() {
         return originalName;
     }
 
-    public void setOriginalName(String originalName) {
+    void setOriginalName(String originalName) {
         this.originalName = originalName;
     }
 
-    public List<Integer> getGenreIds() {
+    List<Integer> getGenreIds() {
         return genreIds;
     }
 
-    public void setGenreIds(List<Integer> genreIds) {
+    void setGenreIds(List<Integer> genreIds) {
         this.genreIds = genreIds;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
-    public Double getPopularity() {
+    Double getPopularity() {
         return popularity;
     }
 
-    public void setPopularity(Double popularity) {
+    void setPopularity(Double popularity) {
         this.popularity = popularity;
     }
 
-    public List<String> getOriginCountry() {
+    List<String> getOriginCountry() {
         return originCountry;
     }
 
-    public void setOriginCountry(List<String> originCountry) {
+    void setOriginCountry(List<String> originCountry) {
         this.originCountry = originCountry;
     }
 
-    public Integer getVoteCount() {
+    Integer getVoteCount() {
         return voteCount;
     }
 
-    public void setVoteCount(Integer voteCount) {
+    void setVoteCount(Integer voteCount) {
         this.voteCount = voteCount;
     }
 
-    public String getFirstAirDate() {
+    String getFirstAirDate() {
         return firstAirDate;
     }
 
-    public void setFirstAirDate(String firstAirDate) {
+    void setFirstAirDate(String firstAirDate) {
         this.firstAirDate = firstAirDate;
     }
 
-    public String getBackdropPath() {
+    String getBackdropPath() {
         return backdropPath;
     }
 
-    public void setBackdropPath(String backdropPath) {
+    void setBackdropPath(String backdropPath) {
         this.backdropPath = backdropPath;
     }
 
-    public String getOriginalLanguage() {
+    String getOriginalLanguage() {
         return originalLanguage;
     }
 
-    public void setOriginalLanguage(String originalLanguage) {
+    void setOriginalLanguage(String originalLanguage) {
         this.originalLanguage = originalLanguage;
     }
 
-    public Integer getId() {
+    Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    void setId(Integer id) {
         this.id = id;
     }
 
-    public Double getVoteAverage() {
+    Double getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(Double voteAverage) {
+    void setVoteAverage(Double voteAverage) {
         this.voteAverage = voteAverage;
     }
 
-    public String getOverview() {
+    String getOverview() {
         return overview;
     }
 
-    public void setOverview(String overview) {
+    void setOverview(String overview) {
         this.overview = overview;
     }
 
-    public String getPosterPath() {
+    String getPosterPath() {
         return posterPath;
     }
 
-    public void setPosterPath(String posterPath) {
+    void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
     }
 }
