@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.marccaps.movieschallenge.R;
@@ -37,6 +38,8 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
     RecyclerView recyclerViewMoviesList;
     @BindView(R.id.parentShimmerLayout)
     ShimmerFrameLayout parentShimmerLayout;
+    @BindView(R.id.error_layout)
+    RelativeLayout errorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +81,7 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
 
     @Override
     public void setDataToList(List<Movie> movieArrayList) {
+        disableErrorView();
         moviesList.addAll(movieArrayList);
         moviesListAdapter.notifyDataSetChanged();
 
@@ -86,7 +90,16 @@ public class ShowList extends AppCompatActivity implements MovieListContract.Vie
 
     @Override
     public void onResponseFailure(Throwable throwable) {
+        disableShimmerEffect();
+        enableErrorView();
+    }
 
+    private void disableErrorView() {
+        errorLayout.setVisibility(View.INVISIBLE);
+    }
+
+    private void enableErrorView() {
+        errorLayout.setVisibility(View.VISIBLE);
     }
 
     private void disableShimmerEffect() {
