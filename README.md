@@ -3,6 +3,13 @@
 
 This is an example application of a List using MovieDB Api. This application will show a list of cards about all the Popular movies in the MovieDB Api.
 
+## Architecture Details
+
+* Android app developed in Java based on MVP Architecture
+* Asynchronous calls handled by Retrofit 2
+* Injection made using ButterKnife
+* Image loader handled by Picasso
+
 ## Libraries
 
 * CardView 28.0.0
@@ -62,9 +69,13 @@ dependencies {
 
 * Endpoints used: "tv/popular"
 
-## Apk Demo
+## Contact
 
-You can download the application demo from this [link](https://i.diawi.com/eNtykK)
+<a href="mailto:marccaps@gmail.com"> marccaps@gmail.com</a>
+
+## Improvements // TODO
+
+* Cache and DB
 
 ## License
 
